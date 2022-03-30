@@ -7,16 +7,26 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    public function listing(){
+    public function listing(Request $request){
 
         $todolist = ToDoList::orderBy('done', 'asc')->orderByDesc('created_at')->paginate(10);
+
+        if ($request->has('search')){
+            $word = $request->search;
+            $todolist = ToDoList::orderBy('done', 'asc')->orderByDesc('created_at')->where('todo', 'like', "%$word")->paginate(10);
+        }
 
         return view('listing', compact('todolist'));
     }
 
-    public function edit(){
+    public function edit(Request $request){
 
         $todolist = ToDoList::orderBy('done', 'asc')->orderByDesc('created_at')->paginate(10);
+
+        if ($request->has('search')){
+            $word = $request->search;
+            $todolist = ToDoList::orderBy('done', 'asc')->orderByDesc('created_at')->where('todo', 'like', "%$word")->paginate(10);
+        }
 
         return view('edit', compact('todolist'));
     }

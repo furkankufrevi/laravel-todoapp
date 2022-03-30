@@ -5,6 +5,18 @@
 @section('content')
         <div class="container">
             <div class="row">
+                <div class="col-md-12 text-center">
+                    <form action="#" class="form-inline my-2 my-lg-0">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="search" placeholder="Search" aria-label="Search" value="{{request('search')}}">
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-10">
                     <h2>ToDoList</h2>
                 </div>
